@@ -4,10 +4,9 @@ import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.ShapeDrawable;
 import android.os.Build;
-import android.os.Bundle;
-import android.support.annotation.VisibleForTesting;
 import android.support.v4.view.ViewCompat;
 import android.support.v7.widget.AppCompatImageView;
+import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
@@ -91,7 +90,7 @@ class BottomBarBadge extends TextView {
         return isVisible;
     }
 
-    void attachToTab(BottomBarTab tab, int backgroundColor) {
+    void attachToTab(BottomBarTab tab, int backgroundColor, float textSize) {
         ViewGroup.LayoutParams params = new ViewGroup.LayoutParams(
                 ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
 
@@ -101,6 +100,7 @@ class BottomBarBadge extends TextView {
 
         setColoredCircleBackground(backgroundColor);
         wrapTabAndBadgeInSameContainer(tab);
+        textSize(textSize);
     }
 
     void setColoredCircleBackground(int circleColor) {
@@ -108,6 +108,12 @@ class BottomBarBadge extends TextView {
         ShapeDrawable backgroundCircle = BadgeCircle.make(innerPadding * 3, circleColor);
         setPadding(innerPadding, innerPadding, innerPadding, innerPadding);
         setBackgroundCompat(backgroundCircle);
+    }
+
+    void textSize(float size) {
+        if (size != 0) {
+            setTextSize(TypedValue.COMPLEX_UNIT_PX, size);
+        }
     }
 
     private void wrapTabAndBadgeInSameContainer(final BottomBarTab tab) {
