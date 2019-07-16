@@ -13,6 +13,7 @@ import android.support.annotation.VisibleForTesting;
 import android.support.v4.view.ViewCompat;
 import android.support.v4.view.ViewPropertyAnimatorCompat;
 import android.support.v7.widget.AppCompatImageView;
+import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
@@ -62,6 +63,7 @@ public class BottomBarTab extends LinearLayout {
     private int barColorWhenSelected;
     private int badgeBackgroundColor;
     private boolean badgeHidesWhenActive;
+    private float badgeTextSize;
     private AppCompatImageView iconView;
     private TextView titleView;
     private boolean isActive;
@@ -87,12 +89,13 @@ public class BottomBarTab extends LinearLayout {
         setBadgeHidesWhenActive(config.badgeHidesWhenSelected);
         setTitleTextAppearance(config.titleTextAppearance);
         setTitleTypeface(config.titleTypeFace);
+        setBadgeTextSize(config.badgeTextSize);
     }
 
     void prepareLayout() {
         inflate(getContext(), getLayoutResource(), this);
         setOrientation(VERTICAL);
-        setGravity(isTitleless? Gravity.CENTER : Gravity.CENTER_HORIZONTAL);
+        setGravity(isTitleless ? Gravity.CENTER : Gravity.CENTER_HORIZONTAL);
         setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
         setBackgroundResource(MiscUtils.getDrawableRes(getContext(), R.attr.selectableItemBackgroundBorderless));
 
@@ -288,6 +291,14 @@ public class BottomBarTab extends LinearLayout {
         this.badgeHidesWhenActive = hideWhenActive;
     }
 
+    public void setBadgeTextSize(float badgeTextSize) {
+        this.badgeTextSize = badgeTextSize;
+
+        if (badge != null) {
+            badge.setTextSize(TypedValue.COMPLEX_UNIT_PX, badgeTextSize);
+        }
+    }
+
     int getCurrentDisplayedIconColor() {
         Object tag = iconView.getTag(R.id.bb_bottom_bar_color_id);
 
@@ -328,7 +339,7 @@ public class BottomBarTab extends LinearLayout {
 
         if (badge == null) {
             badge = new BottomBarBadge(getContext());
-            badge.attachToTab(this, badgeBackgroundColor);
+            badge.attachToTab(this, badgeBackgroundColor, badgeTextSize);
         }
 
         badge.setCount(count);
@@ -647,6 +658,7 @@ public class BottomBarTab extends LinearLayout {
         private final int activeTabColor;
         private final int barColorWhenSelected;
         private final int badgeBackgroundColor;
+        private float badgeTextSize;
         private final int titleTextAppearance;
         private final Typeface titleTypeFace;
         private boolean badgeHidesWhenSelected = true;
@@ -659,6 +671,7 @@ public class BottomBarTab extends LinearLayout {
             this.barColorWhenSelected = builder.barColorWhenSelected;
             this.badgeBackgroundColor = builder.badgeBackgroundColor;
             this.badgeHidesWhenSelected = builder.hidesBadgeWhenSelected;
+            this.badgeTextSize = builder.badgeTextSize;
             this.titleTextAppearance = builder.titleTextAppearance;
             this.titleTypeFace = builder.titleTypeFace;
         }
@@ -671,6 +684,7 @@ public class BottomBarTab extends LinearLayout {
             private int barColorWhenSelected;
             private int badgeBackgroundColor;
             private boolean hidesBadgeWhenSelected = true;
+            private float badgeTextSize;
             private int titleTextAppearance;
             private Typeface titleTypeFace;
 
@@ -706,6 +720,11 @@ public class BottomBarTab extends LinearLayout {
 
             public Builder hideBadgeWhenSelected(boolean hide) {
                 this.hidesBadgeWhenSelected = hide;
+                return this;
+            }
+
+            public Builder badgeTextSize(float badgeTextSize) {
+                this.badgeTextSize = badgeTextSize;
                 return this;
             }
 
