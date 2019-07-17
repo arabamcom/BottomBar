@@ -2,7 +2,7 @@
 # BottomBar
 
 
-This repository forked from [roughike/BottomBar](https://github.com/roughike/BottomBar) and been using by arabam.com android-team. We added some needed feature and will contunie. Please feel free for open issue or pull request.
+This repository forked from [roughike/BottomBar](https://github.com/roughike/BottomBar) and been using by arabam.com android-team. We added some needed feature and will continue. Please feel free for open issue or pull request.
 
 <img src="https://raw.githubusercontent.com/roughike/BottomBar/master/graphics/shy-demo.gif" width="30%" /> <img src="https://raw.githubusercontent.com/roughike/BottomBar/master/graphics/shifting-demo.gif" width="30%" /> <img src="https://raw.githubusercontent.com/roughike/BottomBar/master/graphics/screenshot_tablet.png" width="33%" />
 
