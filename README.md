@@ -1,51 +1,23 @@
-# BottomBar (Deprecated)
 
-I don't have time to maintain this anymore. I basically wrote the whole library in a rush, without tests, while being a serious expert beginner at the time. As a result, there's a lot of unpredictable moving parts and the tests probably aren't that great either. Don't really know, since I haven't touched this in ages.
+# BottomBar
 
-I'd recommend you to use the official BottomNavigationView from Google and urge them to implement the features you need. Or use another 3rd party library.
 
-If someone wants to pick up where I left off, make a fork of this, notify me and I'll link to your repo here.
-
-[![Build Status](https://travis-ci.org/roughike/BottomBar.svg?branch=master)](https://travis-ci.org/roughike/BottomBar) [![Coverage Status](https://coveralls.io/repos/github/roughike/BottomBar/badge.svg?branch=development)](https://coveralls.io/github/roughike/BottomBar?branch=master) [![Download](https://api.bintray.com/packages/roughike/maven/bottom-bar/images/download.svg)](https://bintray.com/roughike/maven/bottom-bar/_latestVersion)
+This repository forked from [roughike/BottomBar](https://github.com/roughike/BottomBar) and been using by arabam.com android-team. We added some needed feature and will contunie. Please feel free for open issue or pull request.
 
 <img src="https://raw.githubusercontent.com/roughike/BottomBar/master/graphics/shy-demo.gif" width="30%" /> <img src="https://raw.githubusercontent.com/roughike/BottomBar/master/graphics/shifting-demo.gif" width="30%" /> <img src="https://raw.githubusercontent.com/roughike/BottomBar/master/graphics/screenshot_tablet.png" width="33%" />
 
-## Version 2.0 released!
+## Latest release!
 
-[The latest version before that can be found in the v1 branch](https://github.com/roughike/BottomBar/tree/v1)
-
-* Cleaner code and better APIs
-* No more unnecessary stuff or spaghetti mess
-* Now the look, feel and behavior is defined in XML, as it should be
-* No more nasty regressions, thanks to the automated tests
-* **Everything is a little different compared to earlier, but it's for the greater good!**
-
-[How to contribute](https://github.com/roughike/BottomBar/blob/master/README.md#contributions)
-
-[Changelog](https://github.com/roughike/BottomBar/blob/master/CHANGELOG.md)
-
-## What?
-
-A custom view component that mimics the new [Material Design Bottom Navigation pattern](https://www.google.com/design/spec/components/bottom-navigation.html).
-
-## Does it work on my Grandpa Gary's HTC Dream?
-
-Nope. The minSDK version is **API level 11 (Honeycomb).**
-
-## Gimme that Gradle sweetness, pls?
-
-```groovy
-compile 'com.roughike:bottom-bar:2.3.1'
-```
-
-**Maven:**
+* Badge text size is editable. If you want you can change badge text size value in xml;
 ```xml
-<dependency>
-  <groupId>com.roughike</groupId>
-  <artifactId>bottom-bar</artifactId>
-  <version>2.3.1</version>
-  <type>pom</type>
-</dependency>
+    app:bb_badgeTextSize="10sp"
+```
+## Add the dependency
+**Gradle:**
+```css
+dependencies {
+	        implementation 'com.github.arabamcom:BottomBar:v2.3.2'
+	}
 ```
 
 ## How?
@@ -354,6 +326,7 @@ nearby.removeBadge/();
     app:bb_inActiveTabColor="#222222"
     app:bb_activeTabColor="@color/colorPrimary"
     app:bb_badgesHideWhenActive="true"
+    app:bb_badgeTextSize="10sp"
     app:bb_titleTextAppearance="@style/MyTextAppearance"
     app:bb_titleTypeFace="fonts/MySuperDuperFont.ttf"
     app:bb_showShadow="true" />
@@ -378,6 +351,8 @@ nearby.removeBadge/();
     <dd>the background color for any Badges in this BottomBar.</dd>
     <dt>bb_badgesHideWhenActive</dt>
     <dd>whether badges should be hidden for active tabs, defaults to true.</dd>
+    <dt>bb_badgeTextSize</dt>
+    <dd>the sp value for badge text size. </dd>
     <dt>bb_titleTextAppearance</dt>
     <dd>custom textAppearance for the titles</dd>
     <dt>bb_titleTypeFace</dt>
