@@ -14,9 +14,9 @@ This repository forked from [roughike/BottomBar](https://github.com/roughike/Bot
 ```
 ## Add the dependency
 **Gradle:**
-```css
+```groovy
 dependencies {
-	        implementation 'com.github.arabamcom:BottomBar:v2.3.2'
+	        implementation 'com.github.arabamcom:BottomBar:2.3.2'
 	}
 ```
 
